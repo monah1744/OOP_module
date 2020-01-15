@@ -1,6 +1,7 @@
-from exceptions import *
-from models import Player
+from exceptions import EnemyDown
+from exceptions import GameOver
 from models import Enemy
+from models import Player
 import settings
 
 
