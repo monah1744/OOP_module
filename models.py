@@ -1,5 +1,6 @@
 from random import randint
-from exceptions import *
+from exceptions import EnemyDown
+from exceptions import GameOver
 from settings import LIVES
 
 
@@ -16,7 +17,7 @@ class Enemy:
         self.lives = self.lives-1
         print(f"Enemy lives - {self.lives}")
         if not self.lives:
-            raise EnemyDown("Enemy Down")
+            raise EnemyDown()
 
 
 class Player:
@@ -27,38 +28,25 @@ class Player:
 
     @staticmethod
     def fight(attack, defense):
-        attack = int(attack)
-        defense = int(defense)
-        if attack == 1:
-            if defense == 2:
-                return 1
-            if defense == 3:
-                return -1
-            if defense == 1:
-                return 0
+        win = [(1, 2), (2, 3), (3, 1)]
+        lose = [(1, 3), (2, 1), (3, 2)]
+        draw = [(1, 1), (2, 2), (3, 3)]
+        fight_case = (int(attack), int(defense))
+        if fight_case in win:
+            return 1
 
-        if attack == 2:
-            if defense == 3:
-                return 1
-            if defense == 1:
-                return -1
-            if defense == 2:
-                return 0
+        if fight_case in lose:
+            return -1
 
-        if attack == 3:
-            if defense == 1:
-                return 1
-            if defense == 2:
-                return -1
-            if defense == 3:
-                return 0
+        if fight_case in draw:
+            return 0
 
     def decrease_lives(self):
         self.lives = self.lives-1
         print(f"your lives - {self.lives}")
         if not self.lives:
             print(f"your score - {self.score}\n")
-            raise GameOver("GameOver", self)
+            raise GameOver(self)
 
     def attack(self, enemy_obj):
         pl_choise = input("Your attack, Make your choise [1-3] : ")

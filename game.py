@@ -17,8 +17,6 @@ def play():
         except EnemyDown:
             level += 1
             player.score += 5
-            pass
-            del enemy
             enemy = Enemy(level)
 
 
