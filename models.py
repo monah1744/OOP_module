@@ -1,5 +1,6 @@
 from random import randint
 from exceptions import *
+from settings import LIVES
 
 
 class Enemy:
@@ -21,8 +22,7 @@ class Enemy:
 class Player:
     def __init__(self, pl_name):
         self.pl_name = pl_name
-        self.level = 1
-        self.lives = 1
+        self.lives = LIVES
         self.score = 0
 
     @staticmethod
@@ -58,7 +58,7 @@ class Player:
         print(f"your lives - {self.lives}")
         if not self.lives:
             print(f"your score - {self.score}\n")
-            raise GameOver("GameOver")
+            raise GameOver("GameOver", self)
 
     def attack(self, enemy_obj):
         pl_choise = input("Your attack, Make your choise [1-3] : ")

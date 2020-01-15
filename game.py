@@ -25,8 +25,11 @@ def play():
 def main():
     try:
         play()
-    except GameOver:
+    except GameOver as g_o:
         print("GameOver")
+        ffile = open('scores.txt', 'a')
+        ffile.write(g_o.pl_name + ' - ' + g_o.pl_score + '\n')
+        ffile.close
     except KeyboardInterrupt:
         pass
     finally:
