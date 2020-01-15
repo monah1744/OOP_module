@@ -6,5 +6,6 @@ class GameOver(Exception):
 
 
 class EnemyDown(Exception):
-    def __init__(self):
-        super().__init__()
+    """
+    class EnemyDown. Needed for implement enemy dying
+    """
