@@ -1,16 +1,20 @@
+"""
+module game. main exec file :)
+"""
 from exceptions import EnemyDown
 from exceptions import GameOver
 from models import Enemy
 from models import Player
-import settings
 
 
 def play():
+    """
+    method play. :)
+    """
     pl_name = input("Enter your name : ")
     player = Player(pl_name)
     level = 1
     enemy = Enemy(1)
-
     while True:
         try:
             player.attack(enemy)
@@ -22,6 +26,9 @@ def play():
 
 
 def main():
+    """
+    method main. :)
+    """
     try:
         play()
     except GameOver as g_o:
@@ -33,7 +40,6 @@ def main():
         pass
     finally:
         print("Good Bye!")
-        return 0
 
 
 if __name__ == "__main__":
